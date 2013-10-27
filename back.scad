@@ -20,27 +20,28 @@ module roundedBox(x,y,z,r){
 }
 
 module backVents(){
-	translate([0,0,-1]) roundedBox(0.5,7,4,0.25);
-	translate([3,0,-1]) roundedBox(0.5,7,4,0.25);
-	translate([6,0,-1]) roundedBox(0.5,7,4,0.25);
-	translate([9,0,-1]) roundedBox(0.5,7,4,0.25);
-	translate([12,0,-1]) roundedBox(0.5,7,4,0.25);
+	for (i = [0:3:12]){
+		translate([i,0,-1]) roundedBox(0.5,7,4,0.25);
+	}
 }
 
 
 /* Bottom */
-difference(){
-	roundedBox(20,30,10,3);
-	translate([1,1,2]) roundedBox(18,28,10,2);
-	translate([4,18,0]) backVents();
+color([99/255, 189/255, 164/255]){
+	difference(){
+		roundedBox(20,30,10,3);
+		translate([1,1,2]) roundedBox(18,28,10,2);
+		translate([4,18,0]) backVents();
+	}
 }
 
 
 /* Lid */
-translate([-23,0,0]){
-	difference(){
-		roundedBox(20,30,1,3);
-		translate([3,13,-1]) roundedBox(14,14,3,1);
+color([99/255, 189/255, 164/255]){
+	translate([-23,0,0]){
+		difference(){
+			roundedBox(20,30,1,3);
+			translate([3,13,-1]) roundedBox(14,14,3,1);
+		}
 	}
 }
-

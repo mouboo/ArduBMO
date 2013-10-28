@@ -28,7 +28,7 @@ module roundedBox(x,y,z,r){
 }
 
 module backVents(){
-	for (i = [0:1:4]){
+	for (i = [0:4]){
 		translate([outerX/7*i,0,-1]) roundedBox(0.03*outerX, 0.28*outerY, 2+wall, 0.1*outerR);
 	}
 }

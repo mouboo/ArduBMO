@@ -39,23 +39,25 @@ module batteryHatch(){
 
 /* CASE BACK */
 
-difference(){
-	/* solid block */
-	roundedBox(outerX,outerY,outerZ,outerR);
-
-	/* hollow */
-	translate([wall,wall,wall]){ 
-		roundedBox(outerX-(2*wall),outerY-(2*wall),outerZ,outerR-wall);
-	}
-
-	/* remove back vents */
-	translate([(outerX - (4*(outerX/7)+(0.03*outerX)))/2, 0.85*outerX,0]){
-		backVents();
-	}
+union(){
+	difference(){
+		/* solid block */
+		roundedBox(outerX,outerY,outerZ,outerR);
 	
-	/* remove battery hatch */ 
-	translate([(outerX-(0.67*outerX))/2, 0.3*outerX, -1]){
-		batteryHatch();
-	}
+		/* hollow */
+		translate([wall,wall,wall]){ 
+			roundedBox(outerX-(2*wall),outerY-(2*wall),outerZ,outerR-wall);
+		}
 	
+		/* remove back vents */
+		translate([(outerX - (4*(outerX/7)+(0.03*outerX)))/2, 0.85*outerX,0]){
+			backVents();
+		}
+		
+		/* remove battery hatch */ 
+		translate([(outerX-(0.67*outerX))/2, 0.3*outerX, -1]){
+			batteryHatch();
+		}
+		
+	}
 }

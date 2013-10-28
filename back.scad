@@ -4,7 +4,15 @@ Version:
 TODO: Everything.
 */
 
-$fn=72;
+$fn=36;
+
+outerX = 75;
+outerY = 100;
+outerZ = 33;
+outerR = 10;
+wall = 5;
+
+/* MODULES */
 
 module roundedBox(x,y,z,r){
 	translate([r,r,0]){
@@ -20,28 +28,34 @@ module roundedBox(x,y,z,r){
 }
 
 module backVents(){
-	for (i = [0:3:12]){
-		translate([i,0,-1]) roundedBox(0.5,7,4,0.25);
+	for (i = [0:1:4]){
+		translate([outerX/7*i,0,-1]) roundedBox(0.03*outerX, 0.28*outerY, 2+wall, 0.1*outerR);
 	}
 }
 
-
-/* Bottom */
-color([99/255, 189/255, 164/255]){
-	difference(){
-		roundedBox(20,30,10,3);
-		translate([1,1,2]) roundedBox(18,28,10,2);
-		translate([4,18,0]) backVents();
-	}
+module batteryHatch(){
+	roundedBox(0.67*outerX, 0.33*outerY, 2+wall, 0.1*outerR);
 }
 
+/* CASE BACK */
 
-/* Lid */
-color([99/255, 189/255, 164/255]){
-	translate([-23,0,0]){
-		difference(){
-			roundedBox(20,30,1,3);
-			translate([3,13,-1]) roundedBox(14,14,3,1);
-		}
+difference(){
+	/* solid block */
+	roundedBox(outerX,outerY,outerZ,outerR);
+
+	/* hollow */
+	translate([wall,wall,wall]){ 
+		roundedBox(outerX-(2*wall),outerY-(2*wall),outerZ,outerR-wall);
 	}
+
+	/* remove back vents */
+	translate([(outerX - (4*(outerX/7)+(0.03*outerX)))/2, 0.85*outerX,0]){
+		backVents();
+	}
+	
+	/* remove battery hatch */ 
+	translate([(outerX-(0.67*outerX))/2, 0.3*outerX, -1]){
+		batteryHatch();
+	}
+	
 }

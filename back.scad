@@ -38,10 +38,10 @@ module batteryHatch(){
 }
 
 module frontSupports(){
-	translate([0.75*outerR,	0.75*outerR,	1]) cylinder(outerZ-3, outerR/2, outerR/2);
-	translate([outerX-(0.75*outerR),	0.75*outerR,	1]) cylinder(outerZ-3, outerR/2, outerR/2);
-	translate([0.75*outerR,	outerY-(0.75*outerR),	1]) cylinder(outerZ-3, outerR/2, outerR/2);
-	translate([outerX-(0.75*outerR),	outerY-(0.75*outerR),	1]) cylinder(outerZ-3, outerR/2, outerR/2);
+	translate([0.75*outerR, 0.75*outerR, 1]) cylinder(outerZ-3, outerR/2, outerR/2);
+	translate([outerX-(0.75*outerR), 0.75*outerR, 1]) cylinder(outerZ-3, outerR/2, outerR/2);
+	translate([0.75*outerR, outerY-(0.75*outerR), 1]) cylinder(outerZ-3, outerR/2, outerR/2);
+	translate([outerX-(0.75*outerR), outerY-(0.75*outerR), 1]) cylinder(outerZ-3, outerR/2, outerR/2);
 }
 
 /* CASE BACK */
